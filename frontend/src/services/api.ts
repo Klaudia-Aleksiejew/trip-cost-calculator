@@ -52,6 +52,19 @@ export async function createCar(carData: Omit<Car, 'id'>): Promise<Car> {
   return res.json();
 }
 
+export async function updateCar(id: string, carData: Omit<Car, 'id'>): Promise<Car> {
+  const res = await fetch(`${API_URL}/cars/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(carData),
+  });
+  if (!res.ok) {
+    const errorData: { error?: string } = await res.json().catch(() => ({}));
+    throw new Error(errorData.error ?? `Nie udało się zaktualizować samochodu (HTTP ${res.status}).`);
+  }
+  return res.json();
+}
+
 // Delete a car by ID
 export async function deleteCar(id: string): Promise<void> {
   const res = await fetch(`${API_URL}/cars/${id}`, {
