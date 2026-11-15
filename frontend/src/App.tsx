@@ -36,6 +36,7 @@ export function App() {
         passengersCount: passengerCountValue,
       });
       setResults(calculation);
+      window.scrollTo(0, 0);
       setShowResults(true);
     } catch (error) {
       setComparisonError(
@@ -47,6 +48,7 @@ export function App() {
   };
 
   const handleNewComparison = () => {
+    window.scrollTo(0, 0);
     setShowResults(false);
     setResults(null);
     setRoute(null);
@@ -131,7 +133,10 @@ export function App() {
             result={results}
             route={route}
             passengerCount={passengerCountValue}
-            onBack={() => setShowResults(false)}
+            onBack={() => {
+              window.scrollTo(0, 0);
+              setShowResults(false);
+            }}
             onNewComparison={handleNewComparison}
           />
         )}
