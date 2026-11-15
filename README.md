@@ -67,3 +67,5 @@ Podczas realizacji projektu aktywnie korzystano z asystentów sztucznej intelige
 ---
 
 ## Demo aplikacji
+
+<video src="./application_demo.mp4" controls width="100%"></video>
